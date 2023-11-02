@@ -409,5 +409,5 @@ inffast.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h $(SRCDI
 inftrees.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h
 trees.lo: $(SRCDIR)deflate.h $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)trees.h
 
-gunzip$(EXE): $(SHAREDLIBV)
-	$(CC) $(CFLAGS) gunzip.c -o $@ $(LDFLAGS) -L. $(SHAREDLIBV)
+gunzip$(EXE): $(STATICLIB)
+	$(CC) $(CFLAGS) gunzip.c -o $@ $(LDFLAGS) -L. $(STATICLIB)
