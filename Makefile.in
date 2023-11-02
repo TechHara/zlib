@@ -71,11 +71,11 @@ PIC_OBJS = $(PIC_OBJC) $(PIC_OBJA)
 
 all: static shared
 
-static: example$(EXE) minigzip$(EXE)
+static: example$(EXE) minigzip$(EXE) gunzip$(EXE)
 
-shared: examplesh$(EXE) minigzipsh$(EXE)
+shared: examplesh$(EXE) minigzipsh$(EXE) gunzip$(EXE)
 
-all64: example64$(EXE) minigzip64$(EXE)
+all64: example64$(EXE) minigzip64$(EXE) gunzip$(EXE)
 
 check: test
 
@@ -409,4 +409,5 @@ inffast.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h $(SRCDI
 inftrees.lo: $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)inftrees.h
 trees.lo: $(SRCDIR)deflate.h $(SRCDIR)zutil.h $(SRCDIR)zlib.h zconf.h $(SRCDIR)trees.h
 
-gunzip$(EXE): $(SHAREDLIBV) $(CC) $(CFLAGS) gunzip.c -o $@ $(LDFLAGS) -L. $(SHAREDLIBV)
+gunzip$(EXE): $(SHAREDLIBV)
+	$(CC) $(CFLAGS) gunzip.c -o $@ $(LDFLAGS) -L. $(SHAREDLIBV)
